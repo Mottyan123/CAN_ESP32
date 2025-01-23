@@ -2,5 +2,6 @@
 .vscode
 include
 lib
+src/main.cpp
 test
 platformio.ini
