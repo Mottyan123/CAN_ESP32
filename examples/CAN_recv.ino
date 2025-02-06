@@ -14,7 +14,7 @@ void setup() {
 }
 
 void loop() {
-    can_recv8(301, recv_data8, len);
+    can_recv8(0x301, recv_data8, len);
 
     for (int i = 0; i < len; i++) {
         Serial.print(recv_data8[i]);
@@ -22,7 +22,7 @@ void loop() {
     }
     Serial.println();
 
-    can_recv16(302, recv_data16, len);
+    can_recv16(0x302, recv_data16, len);
 
     for (int i = 0; i < len; i++) {
         Serial.print(recv_data16[i]);

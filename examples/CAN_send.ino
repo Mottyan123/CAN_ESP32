@@ -14,11 +14,11 @@ void setup() {
 }
 
 void loop() {
-    if (!can_send8(301, send_data8, 8)){ // CAN通信データ送信(8ビットデータ配列)
+    if (!can_send8(0x301, send_data8, 8)){ // CAN通信データ送信(8ビットデータ配列)
         Serial.println("CAN通信データ送信失敗(8bit)");
     }
 
-    if (!can_send16(302, send_data16, 4)){ // CAN通信データ送信(16ビットデータ配列)
+    if (!can_send16(0x302, send_data16, 4)){ // CAN通信データ送信(16ビットデータ配列)
         Serial.println("CAN通信データ送信失敗(16bit)");
     }
 
