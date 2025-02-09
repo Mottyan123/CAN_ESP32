@@ -72,7 +72,9 @@ void can_recv16(uint16_t id, int16_t data[], uint8_t &len) {
 
         if (CAN.packetId() == id) {
             for (int i = 0; i < size/2; i++) {
-                data[i] = (int16_t)((CAN.read() | CAN.read() << 8));
+                uint8_t bottom = CAN.read();
+                uint8_t top = CAN.read();
+                data[i] = (int16_t)((top << 8) | bottom);
             }
         }
     }
