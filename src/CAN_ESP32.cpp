@@ -51,7 +51,7 @@ bool can_send16(uint16_t id, int16_t data[], uint8_t size) {
 }
 
 /*8bit_data 受信*/
-void can_recv8(uint16_t id, int8_t data[], uint8_t len) {
+void can_recv8(uint16_t id, int8_t data[], uint8_t &len) {
     if (CAN.parsePacket()) {
         uint8_t size = CAN.available();
         len = size;
@@ -65,7 +65,7 @@ void can_recv8(uint16_t id, int8_t data[], uint8_t len) {
 }
 
 /*16bit_data 受信*/
-void can_recv16(uint16_t id, int16_t data[], uint8_t len) {
+void can_recv16(uint16_t id, int16_t data[], uint8_t &len) {
     if (CAN.parsePacket()) {
         uint8_t size = CAN.available();
         len = size/2;
