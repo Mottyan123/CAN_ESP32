@@ -40,8 +40,8 @@ bool can_send16(uint16_t id, int16_t data[], uint8_t size) {
     }
 
     for (int i = 0; i < size; i++) {
-        send_data[i*2] = data[i] & 0xFF;
-        send_data[i*2+1] = (data[i] >> 8) & 0xFF;
+        send_data[i*2] = (uint8_t)(data[i] & 0xFF);
+        send_data[i*2+1] = (uint8_t)((data[i] >> 8) & 0xFF);
     }
 
     CAN.beginPacket(id);
@@ -70,7 +70,7 @@ void can_recv16(uint16_t id, int16_t data[], uint8_t size) {
 
         if (CAN.packetId() == id) {
             for (int i = 0; i < size; i++) {
-                data[i] = (CAN.read() << 8) | CAN.read();
+                data[i] = (int16_t)((CAN.read() | CAN.read() << 8));
             }
         }
     }
